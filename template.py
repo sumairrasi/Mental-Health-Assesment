@@ -2,7 +2,7 @@ import os
 from pathlib import Path
 
 
-project_name = "Mental Health"
+project_name = "Mental_Health"
 
 list_of_files = [
     f"{project_name}/__init__.py",
