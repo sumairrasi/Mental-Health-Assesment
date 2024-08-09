@@ -1,10 +1,4 @@
-from Mental_Health.logger import logging
-from Mental_Health.exception import MentalHealthException
-import sys
+from Mental_Health.pipeline.training_pipeline import TrainingPipeline
 
-
-
-try:
-    a=2/0
-except Exception as e:
-    raise MentalHealthException(e,sys)
+obj = TrainingPipeline()
+obj.run_pipeline()

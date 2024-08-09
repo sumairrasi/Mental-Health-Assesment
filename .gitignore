@@ -1,2 +1,6 @@
 env/
 Mental_Health.egg-info/
+artifact/
+Notebook/mongodb_demo.ipynb
+demo.py/
+log/
