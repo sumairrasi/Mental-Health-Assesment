@@ -1,0 +1,121 @@
+columns:
+  - Timestamp: object
+  - Age: int
+  - Gender: object
+  - Country: object
+  - self_employed: object
+  - family_history: object
+  - treatment: object
+  - work_interfere: object
+  - no_employees: object
+  - remote_work: object
+  - tech_company: object
+  - benefits: object
+  - care_options: object
+  - wellness_program: object
+  - seek_help: object
+  - anonymity: object
+  - leave: object
+  - mental_health_consequence: object
+  - phys_health_consequence: object
+  - coworkers: object
+  - supervisor:  object
+  - mental_health_interview: object
+  - phys_health_interview: object
+  - mental_vs_physical: object
+  - obs_consequence: object
+  - state: object
+  - comments: object
+
+numerical_columns:
+ - Age
+
+
+categorical_columns:
+  - Timestamp
+  - comments
+  - Gender
+  - self_employed
+  - family_history
+  - Country
+  - treatment
+  - work_interfere
+  - no_employees
+  - remote_work
+  - tech_company
+  - benefits
+  - care_options
+  - wellness_program
+  - seek_help
+  - anonymity
+  - leave
+  - mental_health_consequence
+  - phys_health_consequence
+  - coworkers
+  - supervisor
+  - mental_health_interview
+  - phys_health_interview
+  - mental_vs_physical
+  - obs_consequence
+  - state
+
+drop_columns:
+  - Timestamp
+  - comments
+  - state
+  - Country
+
+lb_en_columns:
+  - 'Gender'
+  - 'self_employed' 
+  - 'family_history'
+  - 'treatment'
+  - 'work_interfere'
+  - 'no_employees'
+  - 'remote_work'
+  - 'tech_company'
+  - 'benefits'
+  - 'care_options'
+  - 'wellness_program'
+  - 'seek_help'
+  - 'anonymity'
+  - 'leave'
+  - 'mental_health_consequence'
+  - 'phys_health_consequence'
+  - 'coworkers'
+  - 'supervisor'
+  - 'mental_health_interview'
+  - 'phys_health_interview'
+  - 'mental_vs_physical'
+  - 'obs_consequence'
+
+data_null_handler:
+  GENDER:
+    - Male
+  WORK_INTERFERE:
+    - Don't know
+  NO_EMPLOYEES:
+    - 26-100
+  BENEFITS:
+    - Don't know
+  CARE_OPTIONS:
+    - Not sure
+  WELLNESS_PROGRAM:
+    - Don't know
+  SEEK_HELP:
+    - Don't know
+  ANONYMITY:
+    - Don't know
+  LEAVE:
+    - Don't know
+  MENTAL_VS_PHYSICAL:
+    - Don't know
+
+
+
+
+
+
+
+
+
