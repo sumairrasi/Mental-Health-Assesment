@@ -65,15 +65,10 @@ drop_columns:
   - state
   - Country
 
+
 lb_en_columns:
-  - 'Gender'
-  - 'self_employed' 
-  - 'family_history'
-  - 'treatment'
   - 'work_interfere'
   - 'no_employees'
-  - 'remote_work'
-  - 'tech_company'
   - 'benefits'
   - 'care_options'
   - 'wellness_program'
@@ -89,33 +84,44 @@ lb_en_columns:
   - 'mental_vs_physical'
   - 'obs_consequence'
 
+on_en_columns:
+  - 'Gender'
+  - 'self_employed'
+  - 'remote_work'
+  - 'tech_company'
+  - 'family_history'
+
 data_null_handler:
-  GENDER:
+  Gender:
     - Male
-  WORK_INTERFERE:
+  work_interfere:
     - Don't know
-  NO_EMPLOYEES:
+  no_employees:
     - 26-100
-  BENEFITS:
+  benefits:
     - Don't know
-  CARE_OPTIONS:
+  care_options:
     - Not sure
-  WELLNESS_PROGRAM:
+  wellness_program:
     - Don't know
-  SEEK_HELP:
+  seek_help:
     - Don't know
-  ANONYMITY:
+  anonymity:
     - Don't know
-  LEAVE:
+  leave:
     - Don't know
-  MENTAL_VS_PHYSICAL:
+  mental_vs_physical:
     - Don't know
+  self_employed:
+    - "Yes"
 
 
 
 
 
-
+transform_columns:
+ - Age
+  
 
 
 
