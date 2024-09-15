@@ -57,9 +57,7 @@ class DataTrasnformation:
         try:
             logging.info("got catgorical columns from schema config")
             od_encoder = OrdinalEncoder()
-            oh_transformer = OneHotEncoder()
             lb_en_columns = self._schema_config['lb_en_columns']
-            oh_en_columns = self._schema_config['on_en_columns']
             transform_columns = self._schema_config['transform_columns']
             logging.info("Initializing label encoding")
             transform_pipe = Pipeline(steps=[
@@ -69,7 +67,6 @@ class DataTrasnformation:
             preprocessor = ColumnTransformer(
                 [
                     ('LabelEncoder',od_encoder,lb_en_columns),
-                    ('OneHotEncoder',oh_transformer,oh_en_columns),
                     ('Transformer',transform_pipe,transform_columns)
                 ]
             )
@@ -109,7 +106,7 @@ class DataTrasnformation:
                 logging.info("drop the columns in drop_cols in training dataset")
                 
                 input_feature_train_df = drop_columns(df=input_feature_train_df, cols=drop_cols)
-                
+                logging.info(f"input_feature_train_df: {len(input_feature_train_df.columns)}")
                 target_feature_train_df = target_feature_train_df.replace(
                     TargetValueMapping()._asdict()
                 )
@@ -119,7 +116,9 @@ class DataTrasnformation:
                 target_feature_test_df = test_df[TARGET_COLUMN]
                 
                 input_features_test_df = drop_columns(df=input_features_test_df,cols= drop_cols)
-                
+                logging.info(f"input_features_test_df: {len(input_features_test_df.columns)}")
+                logging.info(f"Input train features shape: {input_feature_train_df.columns}")
+                logging.info(f"Input test features shape: {input_features_test_df.columns}")
                 logging.info("dropped the column in drop_col of test dataset")
                 
                 target_feature_test_df = target_feature_test_df.replace(
@@ -133,11 +132,10 @@ class DataTrasnformation:
                 self.progress_bar.update(1)
                 # print(input_feature_train_df)
                 input_feature_train_arr = preprocessor.fit_transform(input_feature_train_df)
-                
+                logging.info(f"input_feature_train_arr :",input_feature_train_arr.shape)
                 logging.info("Used the preprocess feature fit transform the train features")
                 
                 input_feature_test_arr = preprocessor.fit_transform(input_features_test_df)
-                
                 
                 logging.info("Creating train array and test array")
                 
@@ -148,6 +146,9 @@ class DataTrasnformation:
                 test_arr = np.c_[
                     input_feature_test_arr,np.array(target_feature_test_df)
                 ]
+                logging.info(f"train array shape: {train_arr.shape}")
+                logging.info(f"test array shape: {test_arr.shape}")
+                
                 self.progress_bar.update(1)
                 save_object(self.data_transformation_config.transformed_object_file_path,preprocessor)
                 save_numpy_array_data(self.data_transformation_config.transformation_train_file_path,array=train_arr)

@@ -83,13 +83,12 @@ lb_en_columns:
   - 'phys_health_interview'
   - 'mental_vs_physical'
   - 'obs_consequence'
-
-on_en_columns:
   - 'Gender'
   - 'self_employed'
   - 'remote_work'
   - 'tech_company'
   - 'family_history'
+
 
 data_null_handler:
   Gender:
