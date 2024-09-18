@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mental Health Assessment</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+            padding: 40px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            color: #0056b3;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+        input, select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            background-color: #f7f7f7;
+            font-size: 16px;
+            color: #333;
+        }
+        input:focus, select:focus {
+            border-color: #0056b3;
+            background-color: #fff;
+            outline: none;
+        }
+        button {
+            display: block;
+            width: 100%;
+            padding: 14px;
+            margin-top: 20px;
+            background-color: #0056b3;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #004494;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        .form-group {
+            flex: 1;
+        }
+        @media (max-width: 600px) {
+            .form-row {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Mental Health Assessment</h2>
+        <form action="/" method="POST">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" style="width: 263px;" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <select id="gender" name="gender" required>
+                        <option value="">Select Gender</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="family_history">Family History of Mental Health Issues:</label>
+                    <select id="family_history" name="family_history" required>
+                        <option value="">Select an Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="benefits">Do You Have Access to Mental Health Benefits?:</label>
+                    <select id="benefits" name="benefits" required>
+                        <option value="">Select an Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Don't know">Not Sure</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="care_options">Do You Know About Care Options Available?:</label>
+                    <select id="care_options" name="care_options" required>
+                        <option value="">Select an Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Not sure">Not sure</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="anonymity">Is Anonymity Provided by the Company?:</label>
+                    <select id="anonymity" name="anonymity" required>
+                        <option value="">Select an Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                        <option value="Don't know">Not Sure</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="leave">How Easy Is It to Take Leave for Mental Health Reasons?:</label>
+                    <select id="leave" name="leave" required>
+                        <option value="">Select an Option</option>
+                        <option value="Very easy">Very Easy</option>
+                        <option value="Somewhat easy">Somewhat Easy</option>
+                        <option value="Very difficult">Difficult</option>
+                        <option value="Somewhat difficult">Very Difficult</option>
+                        <option value="Don't know">Don't know</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="work_interfere">Does Your Mental Health Interfere with Your Work?:</label>
+                    <select id="work_interfere" name="work_interfere" required>
+                        <option value="">Select an Option</option>
+                        <option value="Never">Never</option>
+                        <option value="Rarely">Rarely</option>
+                        <option value="Sometimes">Sometimes</option>
+                        <option value="Often">Often</option>
+                        <option value="Don't know">Unknown</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="remote_work">Do you have remote work?:</label>
+                    <select id="remote_work" name="remote_work" required>
+                        <option value="">Select an Option</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+        {% if status %}
+        <div>
+            <p style="color: green;">{{ status.status }}</p>
+        </div>
+        {% endif %}
+    </div>
+    
+</body>
+</html>

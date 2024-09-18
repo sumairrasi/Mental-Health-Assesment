@@ -60,34 +60,34 @@ categorical_columns:
   - state
 
 drop_columns:
+  - no_employees
   - Timestamp
   - comments
   - state
   - Country
+  - wellness_program
+  - seek_help
+  - mental_health_consequence
+  - phys_health_consequence
+  - coworkers
+  - supervisor
+  - mental_health_interview
+  - phys_health_interview
+  - mental_vs_physical
+  - obs_consequence
+  - self_employed
+  - tech_company
 
-
+  
 lb_en_columns:
-  - 'work_interfere'
-  - 'no_employees'
-  - 'benefits'
-  - 'care_options'
-  - 'wellness_program'
-  - 'seek_help'
-  - 'anonymity'
-  - 'leave'
-  - 'mental_health_consequence'
-  - 'phys_health_consequence'
-  - 'coworkers'
-  - 'supervisor'
-  - 'mental_health_interview'
-  - 'phys_health_interview'
-  - 'mental_vs_physical'
-  - 'obs_consequence'
-  - 'Gender'
-  - 'self_employed'
-  - 'remote_work'
-  - 'tech_company'
-  - 'family_history'
+  - work_interfere
+  - benefits
+  - care_options
+  - anonymity
+  - leave
+  - Gender
+  - remote_work
+  - family_history
 
 
 data_null_handler:

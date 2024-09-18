@@ -131,11 +131,11 @@ class DataTrasnformation:
                 logging.info("Applying proprocessing object on training dataframe and test dataframe")
                 self.progress_bar.update(1)
                 # print(input_feature_train_df)
-                input_feature_train_arr = preprocessor.fit_transform(input_feature_train_df)
-                logging.info(f"input_feature_train_arr :",input_feature_train_arr.shape)
+                input_feature_train_arr = preprocessor.fit(input_feature_train_df)
+                # logging.info(f"input_feature_train_arr :",input_feature_train_arr.shape)
                 logging.info("Used the preprocess feature fit transform the train features")
                 
-                input_feature_test_arr = preprocessor.fit_transform(input_features_test_df)
+                input_feature_test_arr = preprocessor.transform(input_features_test_df)
                 
                 logging.info("Creating train array and test array")
                 
