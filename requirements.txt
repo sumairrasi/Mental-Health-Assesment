@@ -41,7 +41,6 @@ kiwisolver==1.4.5
 MarkupSafe==2.1.5
 matplotlib==3.9.0
 matplotlib-inline==0.1.7
--e git+https://github.com/sumairrasi/Mental-Health-At-Work-Place.git@50d1ac191501747f7bcb63f62a8243af6d98df7e#egg=Mental_Health
 mypy-boto3-s3==1.35.16
 nest-asyncio==1.6.0
 neuro-mf==0.0.5
