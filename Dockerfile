@@ -1,4 +1,4 @@
-FROM python:3.12-windowsservercore-1809
+FROM python:3.8.5-slim-buster
 
 WORKDIR /app
 
