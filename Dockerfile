@@ -1,4 +1,4 @@
-FROM python:3.11.7-slim
+FROM python:3.12-windowsservercore-1809
 
 WORKDIR /app
 
