@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+FROM alpine:3.20
+
 WORKDIR /app
 
 COPY . /app
