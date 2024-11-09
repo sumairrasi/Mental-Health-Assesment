@@ -1,10 +1,8 @@
-
 # Mental Health Assesment
 
 The "Mental Health Assesment" project leverages machine learning and MLOps techniques to detect, analyze, and address mental health challenges within workplace environments. This system is designed to provide early warnings for potential mental health issues, analyze contributing factors, and suggest personalized interventions to promote a healthier work environment.
 
 This project is also aimed at career optimization, highlighting the integration of modern data science practices with real-world mental health challenges in a professional setting.
-
 
 ## Project Architecture
 
@@ -22,18 +20,20 @@ The project follows an MLOps pipeline with six essential steps:
 
 **Model Pusher:** The best-performing model (based on the highest F1 score) is automatically deployed to an AWS S3 bucket for further use.
 
-
 ## MLOps Pipeline
 
 The project employs an MLOps pipeline for continuous integration and deployment (CI/CD), ensuring the workflow is efficient, scalable, and reliable. The key components of the pipeline are:
 
 * **Data Ingestion:** MongoDB is used to extract data for the assessment model.
-
 * **Evidently:** Used for detecting data drift and validating data quality.
 * **AWS S3:** The deployment destination for the final model.
+
+
+## Workflow
+
+![1731170246892](image/README/1731170246892.png)
+
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
-
-
-
