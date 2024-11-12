@@ -8,17 +8,14 @@ This project is also aimed at career optimization, highlighting the integration 
 
 The project follows an MLOps pipeline with six essential steps:
 
-**Data Ingestion:** The data is collected and ingested from a MongoDB database, serving as the primary source for training.
+* **Data Ingestion:** The data is collected and ingested from a MongoDB database, serving as the primary source for training.
+* **Data Validation:** Data validation is performed using the MLOps tool, Evidently, to monitor data drift and ensure the dataset's consistency and reliability.
 
-**Data Validation:** Data validation is performed using the MLOps tool, Evidently, to monitor data drift and ensure the dataset's consistency and reliability.
+* **Data Transformation:** Data preprocessing steps are applied to clean and prepare the data for model training, including handling missing values, feature scaling, and encoding.
+* **Model Training:** Machine learning models are trained using various algorithms to detect signs of mental health issues based on the input features.
 
-**Data Transformation:** Data preprocessing steps are applied to clean and prepare the data for model training, including handling missing values, feature scaling, and encoding.
-
-**Model Training:** Machine learning models are trained using various algorithms to detect signs of mental health issues based on the input features.
-
-**Model Evaluation:** Models are evaluated based on performance metrics, with the F1 score as the primary measure to ensure balance between precision and recall.
-
-**Model Pusher:** The best-performing model (based on the highest F1 score) is automatically deployed to an AWS S3 bucket for further use.
+* **Model Evaluation:** Models are evaluated based on performance metrics, with the F1 score as the primary measure to ensure balance between precision and recall.
+* **Model Pusher:** The best-performing model (based on the highest F1 score) is automatically deployed to an AWS S3 bucket for further use.
 
 ## MLOps Pipeline
 
@@ -142,7 +139,6 @@ This guide provides a step-by-step process for deploying your application using 
      ```bash
      conda create --name env python=3.10
      ```
-
 2. **Activate the Environment**:
 
    - For `venv`:
@@ -159,7 +155,6 @@ This guide provides a step-by-step process for deploying your application using 
 1. **Install pip (if not already installed)**:
 
    - If you haven't installed `pip`, follow [these instructions](https://pip.pypa.io/en/stable/installation/).
-
 2. **Install Requirements**:
 
    - Navigate to the root directory of your project where `requirements.txt` is located.
@@ -172,32 +167,28 @@ This guide provides a step-by-step process for deploying your application using 
 
 1. Create an ECR repository to save your Docker image.
 
-
 ### Step 3: Build and Push the Docker Image to ECR
 
 1. **Build your Docker image locally**:
 
-    ```bash
-    docker build -t visarepo .
-    ```
-
+   ```bash
+   docker build -t visarepo .
+   ```
 2. **Authenticate Docker to your ECR**:
 
-    ```bash
-    aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {conatiner_registery}
-    ```
-
+   ```bash
+   aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {conatiner_registery}
+   ```
 3. **Tag your Docker image**:
 
-    ```bash
-    docker tag visarepo:latest {image}
-    ```
-
+   ```bash
+   docker tag visarepo:latest {image}
+   ```
 4. **Push the Docker image to ECR**:
 
-    ```bash
-    docker push {image}
-    ```
+   ```bash
+   docker push {image}
+   ```
 
 ---
 
@@ -212,27 +203,24 @@ This guide provides a step-by-step process for deploying your application using 
 ### Step 5: Install Docker on the EC2 Instance
 
 1. **Connect to your EC2 instance via SSH** and run the following commands to set up Docker:
-
 2. **Optional**: Update and upgrade the EC2 instance:
 
-    ```bash
-    sudo apt-get update -y
-    sudo apt-get upgrade -y
-    ```
-
+   ```bash
+   sudo apt-get update -y
+   sudo apt-get upgrade -y
+   ```
 3. **Required**: Install Docker:
 
-    ```bash
-    curl -fsSL https://get.docker.com -o get-docker.sh
-    sudo sh get-docker.sh
-    ```
-
+   ```bash
+   curl -fsSL https://get.docker.com -o get-docker.sh
+   sudo sh get-docker.sh
+   ```
 4. **Add Permissions for Docker**:
 
-    ```bash
-    sudo usermod -aG docker ubuntu
-    newgrp docker
-    ```
+   ```bash
+   sudo usermod -aG docker ubuntu
+   newgrp docker
+   ```
 
 ---
 
@@ -240,21 +228,19 @@ This guide provides a step-by-step process for deploying your application using 
 
 1. **Log in to ECR from your EC2 instance**:
 
-    ```bash
-    aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {conatiner_registery}
-    ```
-
+   ```bash
+   aws ecr get-login-password --region {region} | docker login --username AWS --password-stdin {conatiner_registery}
+   ```
 2. **Pull your Docker image**:
 
-    ```bash
-    docker pull {image}
-    ```
-
+   ```bash
+   docker pull {image}
+   ```
 3. **Run your Docker container**:
 
-    ```bash
-    docker run -d -p 80:80 {image}
-    ```
+   ```bash
+   docker run -d -p 80:80 {image}
+   ```
 
 ---
 
@@ -276,13 +262,14 @@ This section outlines the training, hyperparameter tuning, and deployment proces
 ### Model Configuration
 
 1. **Model Hyperparameter Configuration** (`config/model.yaml`): This YAML file specifies the hyperparameter grids for tuning each classifier. The classifiers include:
+
    - **GradientBoostingClassifier**
    - **AdaBoostClassifier**
    - **XGBClassifier**
 
    These configurations are utilized in the hyperparameter tuning phase to systematically search for the best model parameters.
-
 2. **Data Schema** (`config/schema.yaml`): Defines the data structure, including:
+
    - **Required Fields**: Specifies mandatory input fields.
    - **Categorical Features**: Lists categorical features for encoding.
    - **Numerical Features**: Lists numerical features for scaling or normalization.
@@ -317,9 +304,6 @@ Set up AWS credentials and specify the target S3 bucket in your configuration fo
 ---
 
 This pipeline ensures a robust, reproducible model training and deployment process with storage on Amazon S3, facilitating easy retrieval and scalable deployment.
-
-
-
 
 ## GitHub Secrets Configuration
 
